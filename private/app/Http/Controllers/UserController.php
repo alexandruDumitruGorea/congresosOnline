@@ -97,12 +97,11 @@ class UserController extends Controller
     }
     
     public function imagefile($userfile) {
-        $user = Auth::user();
         $target = Constants::USER_FILE_PATH;
         $mostrar = $target . 'default.png';
         if(Auth::check()) {
             if (file_exists($target . $userfile)) {
-                $mostrar = $target . $user->img;
+                $mostrar = $target . $userfile;
             }
         }
         return response()->file($mostrar);
